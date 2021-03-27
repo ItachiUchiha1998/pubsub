@@ -1,10 +1,16 @@
-import { Schema as _Schema, model } from 'mongoose';
-const Schema = _Schema;
+import { Schema as _Schema, model } from 'mongoose'
+const Schema = _Schema
 
 let Test_Schema = new Schema({	
 	test: String
-});
+})
 
-let Tst = model('tests', Test_Schema);
+const Cattle_Schema = new Schema({
+	name: String,
+	timestamp: Date,
+	image_url: String,
+	resized_image_url: String
+})
 
-export const TESTS = Tst;
+export const TESTS = model('tests', Test_Schema)
+export const CATTLE = model('cattle', Cattle_Schema)
