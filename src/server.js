@@ -33,5 +33,5 @@ mongoose.connect(MONGO_SERVER,
 })
 
 app.listen(port, () => {
-  console.log(`Listening to port: ${port}`);
+  console.log(`Listening to port ${port}!`);
 })
