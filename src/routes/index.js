@@ -3,13 +3,17 @@ const router = require('express').Router()
 import { json, urlencoded } from 'body-parser'
 import multer from 'multer'
 
-// controllers
+// file imports
 import { 
     testController,
     createPortfolioController,
     getPortfoliosController,
     NotFoundController
-} from "../controllers/index"
+} from '../controllers/index'
+import { 
+    ORIGINAL_IMAGE_PATH,  
+
+} from '../config'
 
 // middlewares
 router.use(json());
@@ -18,10 +22,10 @@ router.use(urlencoded({ extended: true }))
 // multer
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './assets/originalImage/');
+        cb(null, ORIGINAL_IMAGE_PATH);
      },
     filename: function (req, file, cb) {
-        cb(null , file.originalname);
+        cb(null , `${Date.now()}.jpg`);
     }
 })
 

@@ -1,10 +1,9 @@
-import { TESTS } from '../db/models';
-
 export async function NotFound(req, res) {
     try {
 
         res.status(404).json({
-            success: false,message: 'Page does not exist!'
+            success: false,
+            msg: 'Page does not exist!'
         });
             
     } catch (e) {
@@ -14,6 +13,5 @@ export async function NotFound(req, res) {
           msg: 'Error Occured' 
         });
     
-      }
-  }
-  
+    }
+}
