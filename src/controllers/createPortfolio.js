@@ -27,7 +27,7 @@ function resizeImage(userId, fileName) {
         
         await CATTLE.findByIdAndUpdate(userId, { 
             is_resized: true,
-            resized_image_url: `${fileName_field}-resized.${fileName_ext}`
+            resized_image_url: `resizedImage/${fileName_field}-resized.${fileName_ext}`
         })
         
         resolve()
@@ -55,7 +55,7 @@ export async function createPortfolio(req, res) {
           })
 
         const data = {
-            fileName: cattle.image_url,
+            fileName: `originalImage/${cattle.image_url}`,
             userId: cattle._id
         }
           

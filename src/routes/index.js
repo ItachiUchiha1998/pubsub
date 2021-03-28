@@ -5,15 +5,13 @@ import { json, urlencoded } from 'body-parser'
 import multer from 'multer'
 
 // file imports
-import { 
-    testController,
+import {
     createPortfolioController,
     getPortfoliosController,
     NotFoundController
 } from '../controllers/index'
 import { 
-    ORIGINAL_IMAGE_PATH,  
-
+    ORIGINAL_IMAGE_PATH,
 } from '../config'
 
 // middlewares
