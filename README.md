@@ -8,6 +8,22 @@
 2. DB: contain the model schema to store messages in database 
 3. Controllers: contain the logic and implementation of functions called on hitting a route
 
+### Deployment
+Project is deployed at: 
+
+`https://animall-backend.herokuapp.com`
+
+to access the image
+1. original: 
+
+    `https://animall-backend.herokuapp.com/originalImage/${image_url}`
+
+2. resized:
+
+    `https://animall-backend.herokuapp.com/resizedImage/${resized_image_url}`
+
+
+
 ### Api
 
  1. Create Portfolio
