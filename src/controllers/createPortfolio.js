@@ -4,12 +4,12 @@ export async function createPortfolio(req, res) {
 
     try {
 
-        const { name, image_url } = req.body
-
+        const { name } = req.body
+        const { filename } = req.file
         await CATTLE.create({
             timestamp: Date.now(),
             name: name,
-            image_url: image_url
+            image_url: filename
         });
 
         return res.status(200).json({ msg: `Cattle Protfolio Created` });
