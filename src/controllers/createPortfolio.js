@@ -57,7 +57,7 @@ export async function createPortfolio(req, res) {
           })
 
         const data = {
-            fileName: cattle.image_url,
+            fileName: `${cattle.image_url}`,
             userId: cattle._id
         }
           
