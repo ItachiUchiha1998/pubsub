@@ -32,11 +32,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 // routes
-router.post('/test', testController)
-
 router.post('/portfolio/create', upload.single('photo'), createPortfolioController)
 
-router.post('/portfolio/get', getPortfoliosController)
+router.get('/portfolio/get', getPortfoliosController)
 
 router.all('*', NotFoundController)
 
