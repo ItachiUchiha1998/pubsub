@@ -14,6 +14,8 @@ function resizeImage(userId, fileName) {
     return new Promise( async (resolve, reject) => {
     
         const imagePath = `${ORIGINAL_IMAGE_PATH}${fileName}`
+
+        console.log("image path: " + imagePath)
     
         const readImage = await read(imagePath)
 
@@ -63,11 +65,13 @@ export async function createPortfolio(req, res) {
             delay: 60000,
             attempts: 2
         }
-        
+
+        console.log("data file: "+data.fileName)
         console.log("Image resize job queued")
-        imageResizeQueue.add(data, options);
-          
+        imageResizeQueue.add(data, options)
+
         imageResizeQueue.process(async job => { 
+            console.log("job file: "+job.data.fileName)
             await resizeImage(job.data.userId, job.data.fileName)
             console.log("Image resized successfully")
             return
