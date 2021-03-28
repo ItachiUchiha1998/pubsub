@@ -20,7 +20,7 @@
 
         {
             name: string,
-            photo file
+            photo: file
         }
     </li>
     </ul>    

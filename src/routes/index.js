@@ -1,4 +1,5 @@
 // modules
+import express from 'express'
 const router = require('express').Router()
 import { json, urlencoded } from 'body-parser'
 import multer from 'multer'
@@ -18,6 +19,7 @@ import {
 // middlewares
 router.use(json());
 router.use(urlencoded({ extended: true }))
+router.use(express.static('assets'));  
 
 // multer
 const storage = multer.diskStorage({
