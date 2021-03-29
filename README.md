@@ -53,3 +53,5 @@ to access the image
     <li> Background job run using redis after /portfolio/create API </li>
     <li>Resizes image to 140x140</li>
     </ul>
+
+### Tests: `npm test`
