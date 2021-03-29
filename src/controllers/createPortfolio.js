@@ -1,46 +1,32 @@
-import { read } from 'jimp'
 import Queue from 'bull'
 
 import { CATTLE } from '../db/models';
 import { 
-    ORIGINAL_IMAGE_PATH,
-    RESIZED_IMAGE_PATH,
     REDIS_HOST,
     REDIS_PORT,
     REDIS_PASSWORD
 } from '../config'
 
-function resizeImage(userId, fileName) {
-    return new Promise( async (resolve, reject) => {
-    
-        const imagePath = `${ORIGINAL_IMAGE_PATH}${fileName}`
-
-        console.log("image path: " + imagePath)
-    
-        const readImage = await read(imagePath)
-
-        const [fileName_field , fileName_ext] = fileName.split('.')
-
-        const resizedImageUrl = `${RESIZED_IMAGE_PATH}${fileName_field}-resized.${fileName_ext}`
-        
-        const resizedImage = readImage
-                            .resize(140, 140)
-                            .write(resizedImageUrl)
-        
-        await CATTLE.findByIdAndUpdate(userId, { 
-            is_resized: true,
-            resized_image_url: `${fileName_field}-resized.${fileName_ext}`
-        })
-        
-        resolve()
-    });
-}
+import resizeImage from '../jobs/resizeImage'
 
 export async function createPortfolio(req, res) {
 
     try {
+        
+        if(!req.file) {
+            return res.status(400).json({
+                msg: "Missing Params"
+            })
+        }
+
         const { name } = req.body
         const { filename } = req.file
+
+        if(!name || !filename) {
+            return res.status(400).json({
+                msg: "Missing Params"
+            })
+        }
         
         const cattle = await CATTLE.create({
             timestamp: Date.now(),

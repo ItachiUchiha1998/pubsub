@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha --require @babel/register",
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./build/server.js",
     "build-babel": "babel -d ./build ./src -s",
@@ -13,9 +13,13 @@
   "author": "Vinayak Shrivastava",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
     "body-parser": "^1.19.0",
     "bull": "^3.22.0",
+    "chai-http": "^4.3.0",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "ioredis": "^4.24.5",
     "jimp": "^0.16.1",
     "mongoose": "^5.12.2",
@@ -23,9 +27,16 @@
     "multer": "^1.4.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.13",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/register": "^7.13.8",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.2.2",
     "babel-preset-env": "^1.7.0",
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
     "rimraf": "^3.0.2"
   }
 }
